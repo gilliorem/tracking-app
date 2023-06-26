@@ -8,15 +8,13 @@ class todoApp
         this.input = createInputElement(this.container, "", "task", ["task-input"]);
         this.button = createButton(this.container, "+", ["add-task-button"]);
         this.taskContainer = new TaskContainer(this);
+        
     }
     checkIfValidTask()
     {
 
     }
-    setEventListeners()
-    {
-        this.button.addEventListener("")
-    }
+
     loadLocalStorage()
     {
 

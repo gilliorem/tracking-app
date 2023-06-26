@@ -5,50 +5,52 @@ class Task
         this.name = name;
         this.checked = checked;
         this.parent = parent;
-        this.display(parent)
+        this.taskValidity(name);
+        this.handleCheck()
+        console.log(this);
     }
 
     display(parent)
     {
-        let taskElement = createDiv(parent, Task.name, [Task.name+"-task"])
+        this.taskElement = createDiv(parent, this.name, [this.name+" task"]);
+        this.bubble = createDiv(this.taskElement, "", ["bubble"]);
+        this.taskTracker = new Tracker();
     }
 
-    setTask(button)
-    {
-        button.addEventListener('click',()=>
-        {
-            this.taskValidity(window.todoApp.input.value);
-            this.listenCheck()
-        })
-    }
-    
     taskValidity(text)
     {
         text.trim();
         if(text.length>0)
         {
-            this.displayTask(window.todoApp.taskContainer, window.todoApp.input.value);
-            window.todoApp.input.value ="";
+            this.display(this.parent)
         }
         else
         alert("enter a valid Task.")
     }
-
-   
     
-    checkTask(bubble)
+    checkTask()
     {
-        bubble.classList.add("checked");
+        this.bubble.classList.toggle("checked");
+        if (this.bubble.classList.contains("checked"))
+        {
+            this.checked = true;
+            this.taskElement.style.textDecoration="line-through";
+        }
+        else this.checked =false;
+        if(!this.checked)
+        {
+            this.taskElement.style.textDecoration="none";
+        }
     }
-    listenCheck()
+    handleCheck()
     {
         this.bubble.addEventListener("click",()=>
         {
             this.checkTask(this.bubble);
-            console.log("clic")
-            console.log(this.bubble.classList)
+            console.log(this)
         })
     }
+    
 }
 
 

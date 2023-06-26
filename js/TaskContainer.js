@@ -8,8 +8,8 @@ class TaskContainer
     }
     addTask()
     {
-        let task = new Task(window.todoApp.input.value, false, this.element);
-        this.tasksList.push(task);
+        this.task = new Task(window.todoApp.input.value, false, this.element);
+        this.tasksList.push(this.task);
     }
     handleAddTask(button)
     {

@@ -7,6 +7,7 @@ class Task
         this.parent = parent;
         this.taskValidity(name);
         this.handleCheck()
+        this.tracker = new Tracker(this);
         console.log(this);
     }
 
@@ -14,7 +15,6 @@ class Task
     {
         this.taskElement = createDiv(parent, this.name, [this.name+" task"]);
         this.bubble = createDiv(this.taskElement, "", ["bubble"]);
-        this.taskTracker = new Tracker();
     }
 
     taskValidity(text)

@@ -1,7 +1,23 @@
 class Tracker
 {
-    constructor()
+    constructor(task)
     {
-        this.trackerElement = this.tracker = createButton(this.taskElement, "⏯️", [this.name+" tracker"]);
+        this.button = createButton(task.taskElement, "⏯️", [task.name+" tracker"]);
+    }
+    startTracking()
+    {
+        let timer;
+        function timer()
+        {
+            timer++;
+        }
+        setInterval(timer,10000)
+    }
+    handleStartTracking()
+    {
+        this.button.addEventListener("click",()=>
+        {
+            this.startTracking();
+        })
     }
 }

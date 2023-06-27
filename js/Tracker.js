@@ -3,10 +3,14 @@ class Tracker
     constructor(task)
     {
         this.button = createButton(task.taskElement, "Start", [task.name+" tracker"]);
-        this.sec =0;
-        this.min=0;
+        this.timerElement = createDiv(task.taskElement, "", [task.name+" timer-element"]);
+        this.min=0o0;
 
-        this.timerElement = createDiv(task.taskElement, "00:00", [task.name+" sec"]);
+        this.minuteElement = createDiv(this.timerElement, "00", [task.name+" min"]);
+        this.sec =0o0;
+        this.secondElement = createDiv(this.timerElement, ":00", [task.name+" sec"]);
+
+
         this.handleStartAndStop();
     }
     startAndStopButton()
@@ -18,18 +22,27 @@ class Tracker
             this.interval = setInterval(()=>
             {
                 this.sec++;
-                this.timerElement.innerText = this.min+this.sec ;
+                if(this.sec<10)
+                {
+                    this.secondElement.innerText = "0"+ this.sec;
+                }
                 if(this.sec>=10)
                 {
-                    this.timerElement.innerText = "00:"+this.sec;
+                    this.secondElement.innerText = this.sec;
                 }
-                if(this.sec>=60)
+                if (this.sec>=60)
                 {
                     this.min++;
-                    this.timerElement.innerText ="0"+this.min+this.sec;
+                    this.minuteElement.innerText = "0"+this.min;
+                    this.sec =0;
+                    this.secondElement.innerText =   "0"+0;
+                }
+                if(this.min>60)
+                {
+                    this.min.innerText = this.min;
                 }
                 console.log(this.sec);
-            }, 50)
+            }, 1000)
         }
         else
         {

@@ -2,22 +2,49 @@ class Tracker
 {
     constructor(task)
     {
-        this.button = createButton(task.taskElement, "⏯️", [task.name+" tracker"]);
+        this.button = createButton(task.taskElement, "Start", [task.name+" tracker"]);
+        this.sec =0;
+        this.min=0;
+
+        this.timerElement = createDiv(task.taskElement, "00:00", [task.name+" sec"]);
+        this.handleStartAndStop();
     }
-    startTracking()
+    startAndStopButton()
     {
-        let timer;
-        function timer()
+        this.button.classList.toggle("running");
+        if(this.button.classList.contains("running"))
         {
-            timer++;
+            this.button.innerText ="Stop";
+            this.interval = setInterval(()=>
+            {
+                this.sec++;
+                this.timerElement.innerText = this.min+this.sec ;
+                if(this.sec>=10)
+                {
+                    this.timerElement.innerText = "00:"+this.sec;
+                }
+                if(this.sec>=60)
+                {
+                    this.min++;
+                    this.timerElement.innerText ="0"+this.min+this.sec;
+                }
+                console.log(this.sec);
+            }, 50)
         }
-        setInterval(timer,10000)
+        else
+        {
+            this.button.innerText = "Start";
+            clearInterval(this.interval);
+        }
     }
-    handleStartTracking()
+    
+    
+    handleStartAndStop()
     {
         this.button.addEventListener("click",()=>
         {
-            this.startTracking();
+            this.startAndStopButton();
         })
     }
 }
+

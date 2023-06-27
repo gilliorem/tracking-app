@@ -152,5 +152,21 @@ button:hover {
 
 .tracker
 {
-  background-color: rgba(61, 69, 141, .3);
+  background-color: rgb(61, 141, 68);
+  border-radius: 0%;
+}
+
+.tracker:hover
+{
+  background-color:rgb(82, 133, 87) ;
+}
+
+.running
+{
+  background-color: red;
+}
+
+.running:hover
+{
+  background-color:rgb(242, 69, 69) ;
 }

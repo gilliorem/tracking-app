@@ -1,3 +1,4 @@
+// console.log('test cmd commit')
 class Tracker
 {
     constructor(task)

@@ -8,21 +8,40 @@ class todoApp
         this.input = createInputElement(this.container, "", "task", ["task-input"]);
         this.button = createButton(this.container, "+", ["add-task-button"]);
         this.taskContainer = new TaskContainer(this);
-        
+        this.setKeyBind();
     }
-    checkIfValidTask()
+    save()
     {
-
+        let serealizedApp = 
+        {
+            tasks :[],
+            
+        }
+        for (let task of this.taskContainer.tasksList)
+        {
+            serealizedApp.tasks.push(task.serealize())
+        }
+        let stringyfiedApp = JSON.stringify(serealizedApp);
+        localStorage.setItem("TODOAPP", stringyfiedApp);
     }
-
-    loadLocalStorage()
+    setKeyBind()
     {
-
+        window.addEventListener('keydown', (e)=>
+        {
+            if (e.ctrlKey && e.key == "s")
+            {
+                e.preventDefault();
+                this.save();
+            }
+        })
     }
-    loadServerData()
-    {
 
-    }
+    //Lire local storage
+    // deseraliser 
+    // trouve l'etat d'objet pour l'afficher dans le dom.
+
+
+    
 }
 
 window.todoApp = new todoApp();

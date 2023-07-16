@@ -9,6 +9,7 @@ class Task
         this.handleCheck()
         this.tracker = new Tracker(this);
         console.log(this);
+        this.serealize();
     }
 
     display(parent)
@@ -49,6 +50,17 @@ class Task
             this.checkTask(this.bubble);
             console.log(this)
         })
+    }
+    
+    serealize()
+    {
+        let serealizedTask = 
+        {
+            name : this.name,
+            checked : this.checked,
+            time : this.tracker.min
+        }
+        return serealizedTask;
     }
     
 }

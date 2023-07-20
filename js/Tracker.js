@@ -3,8 +3,8 @@ class Tracker
 {
     constructor(task)
     {
-        this.button = createButton(task.taskElement, "Start", [task.name+" tracker"]);
-        this.timerElement = createDiv(task.taskElement, "", [task.name+" timer-element"]);
+        this.button = createButton(task.dom, "Start", [task.name+" tracker"]);
+        this.timerElement = createDiv(task.dom, "", [task.name+" timer-element"]);
         this.min=0o0;
 
         this.minuteElement = createDiv(this.timerElement, "00", [task.name+" min"]);

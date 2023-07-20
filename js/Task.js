@@ -8,14 +8,18 @@ class Task
         this.taskValidity(name);
         this.handleCheck()
         this.tracker = new Tracker(this);
-        console.log(this);
         this.serealize();
+        console.log(this)
     }
 
     display(parent)
     {
-        this.taskElement = createDiv(parent, this.name, [this.name+" task"]);
-        this.bubble = createDiv(this.taskElement, "", ["bubble"]);
+        this.dom = createDiv(parent, this.name, [this.name+" task"]);
+        this.bubble = createDiv(this.dom, "", ["bubble"]);
+        if(this.checked)
+        {
+            this.check();
+        }
     }
 
     taskValidity(text)
@@ -29,27 +33,29 @@ class Task
         alert("enter a valid Task.")
     }
     
-    checkTask()
+    check()
     {
-        this.bubble.classList.toggle("checked");
-        if (this.bubble.classList.contains("checked"))
+        this.checked = !this.checked
+        if(this.checked)
         {
-            this.checked = true;
-            this.taskElement.style.textDecoration="line-through";
+            this.bubble.classList.toggle("checked");
+            this.dom.style.textDecoration="line-through";   
         }
-        else this.checked =false;
-        if(!this.checked)
+        else
         {
-            this.taskElement.style.textDecoration="none";
+            this.bubble.classList.toggle("checked");
+            this.dom.style.textDecoration="none";               
         }
+        console.log(this)
     }
+
     handleCheck()
     {
         this.bubble.addEventListener("click",()=>
         {
-            this.checkTask(this.bubble);
-            console.log(this)
+            this.check();
         })
+
     }
     
     serealize()
@@ -67,70 +73,3 @@ class Task
 
 
 
-
-// class Task
-// {
-//     setTask(button, input)
-//     {
-//         button.addEventListener("click",()=>
-//         {
-//             this.taskName = this.input.value.trim();
-//             if (this.taskName.length > 0)
-//             {
-//                 this.tasksList.push(this.taskName);
-//                 this.newTask = createDiv(this.taskContainer,  this.taskName + "🔘", [this.taskName + "-task"]);
-//                 this.input.value="";    
-//             }
-//             else
-//             {
-//                 alert("enter a valid task");
-//             };
-            
-//             this.checkTask(this.newTask);
-//             this.eraseTask(this.newTask);
-//             console.log(this.tasksList);
-//         });
-        
-//         this.input.addEventListener("keydown",(e)=>
-//         {
-//             if(e.key==="Enter")
-//             {
-//             this.taskName = this.input.value.trim();
-//             if (this.taskName.length > 0)
-//             {
-//                 this.tasksList.push(this.taskName);
-//                 this.newTask = createDiv(this.taskContainer,  this.taskName + "", [this.taskName + "-task"]);
-//                 this.input.value="";    
-                
-//             }
-//             else
-//             {
-//                 alert("enter a valid task");
-//             };
-            
-//             this.checkTask(this.newTask);
-//             this.eraseTask(this.newTask);
-//             console.log(this.tasksList);
-
-//             }
-//         })
-//     }
-//     checkTask(task)
-//     {
-//         task.addEventListener("click",()=>
-//         {
-//             task.innerText = this.taskName + "✔️";
-//             task.classList.add("completed");
-//         })
-//     }
-//     eraseTask(task)
-//     {
-//         task.addEventListener("contextmenu", (e)=>
-//         {
-//             e.preventDefault();
-//             task.remove();
-//             this.tasksList = this.tasksList.filter((t)=>t==this.taskName);
-            
-//         })
-//     }
-// }

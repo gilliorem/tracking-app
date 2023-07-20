@@ -2,22 +2,22 @@ class todoApp
 {
     constructor()
     {
-        this.container = createDiv(B,"", ["container"]);
-        this.title = createTitle(this.container, "TO DO: ", ["title"]);
+        this.dom = createDiv(B,"", ["app-container"]);
+        this.title = createTitle(this.dom, "TO DO: ", ["title"]);
         this.titleDesign = createDiv(this.title, "", ["title-design"]);
-        this.input = createInputElement(this.container, "", "task", ["task-input"]);
-        this.button = createButton(this.container, "+", ["add-task-button"]);
-        this.taskContainer = new TaskContainer(this);
+        this.input = createInputElement(this.dom, "", "task", ["task-input"]);
+        this.button = createButton(this.dom, "+", ["add-task-button"]);
+        this.tasks = new Tasks(this);
         this.setKeyBind();
+        this.onRefresh();
     }
     save()
     {
         let serealizedApp = 
         {
             tasks :[],
-            
         }
-        for (let task of this.taskContainer.tasksList)
+        for (let task of this.tasks.list)
         {
             serealizedApp.tasks.push(task.serealize())
         }
@@ -35,16 +35,23 @@ class todoApp
             }
         })
     }
-
-    //Lire local storage
-    // deseraliser 
-    // trouve l'etat d'objet pour l'afficher dans le dom.
-
-
-    
+    displayLocalStorage()
+    {
+        let todoAppJson = localStorage.getItem("TODOAPP");
+        if(!todoAppJson) return
+        let todoAppParsed = JSON.parse(todoAppJson);
+        for (let task of todoAppParsed.tasks)
+        {
+            this.tasks.addTaskFromLocalStorage(task);
+        }
+    }
+    onRefresh()
+    {
+        window.addEventListener("load",()=>
+        {
+            this.displayLocalStorage();
+        })
+    }
 }
 
 window.todoApp = new todoApp();
-
-// make the local storage work.
-// test commit

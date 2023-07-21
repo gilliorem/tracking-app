@@ -9,6 +9,7 @@ class todoApp
         this.button = createButton(this.dom, "+", ["add-task-button"]);
         this.tasks = new Tasks(this);
         this.setKeyBind();
+        this.handleSave();
         this.onRefresh();
     }
     save()
@@ -33,6 +34,27 @@ class todoApp
                 e.preventDefault();
                 this.save();
             }
+        })
+    }
+    handleSave()
+    {
+        this.debounceTimer = null;
+        window.addEventListener('keyup',()=>
+        {
+            clearTimeout(this.debounceTimer);
+            this.debounceTimer = setTimeout(()=>
+            {
+                this.save();
+            }, 1000);
+        });
+        
+        window.addEventListener("click",()=>
+        {
+            clearTimeout(this.debounceTimer);
+            this.debounceTimer = setTimeout(()=>
+            {
+                this.save();
+            },500);
         })
     }
     displayLocalStorage()

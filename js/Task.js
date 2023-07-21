@@ -9,17 +9,13 @@ class Task
         this.handleCheck()
         this.tracker = new Tracker(this);
         this.serealize();
-        console.log(this)
+        console.log(this);
     }
 
     display(parent)
     {
         this.dom = createDiv(parent, this.name, [this.name+" task"]);
         this.bubble = createDiv(this.dom, "", ["bubble"]);
-        if(this.checked)
-        {
-            this.check();
-        }
     }
 
     taskValidity(text)
@@ -35,18 +31,14 @@ class Task
     
     check()
     {
-        this.checked = !this.checked
+        this.checked = !this.checked;
+        this.bubble.classList.toggle("checked");
         if(this.checked)
         {
-            this.bubble.classList.toggle("checked");
-            this.dom.style.textDecoration="line-through";   
+            this.bubble.classList.add("checked");
         }
-        else
-        {
-            this.bubble.classList.toggle("checked");
-            this.dom.style.textDecoration="none";               
-        }
-        console.log(this)
+        else this.bubble.classList == "bubble";
+        
     }
 
     handleCheck()
@@ -55,7 +47,6 @@ class Task
         {
             this.check();
         })
-
     }
     
     serealize()

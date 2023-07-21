@@ -14,7 +14,11 @@ class Tasks
     addTaskFromLocalStorage(data)
     {
         const task = new Task(data.name, data.checked, this.dom);
-        this.list.push(task)
+        this.list.push(task);
+        if(task.checked)
+        {
+            task.bubble.classList.add("checked");
+        }
     }
     handleAddTask(button)
     {

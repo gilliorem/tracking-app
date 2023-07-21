@@ -18,7 +18,10 @@ class Tasks
         if(task.checked)
         {
             task.bubble.classList.add("checked");
-        }
+        }            
+        
+        // task.tracker.minuteElement.innerText == task.minute;
+        // task.tracker.secondElement.innerText == task.second;
     }
     handleAddTask(button)
     {

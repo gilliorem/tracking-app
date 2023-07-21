@@ -29,10 +29,10 @@ class todoApp
     {
         window.addEventListener('keydown', (e)=>
         {
-            if (e.ctrlKey && e.key == "s")
+            if (e.ctrlKey && e.key == "c")
             {
                 e.preventDefault();
-                this.save();
+                localStorage.clear();
             }
         })
     }
@@ -65,7 +65,9 @@ class todoApp
         for (let task of todoAppParsed.tasks)
         {
             this.tasks.addTaskFromLocalStorage(task);
+            
         }
+        
     }
     onRefresh()
     {

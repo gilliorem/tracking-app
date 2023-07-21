@@ -1,17 +1,14 @@
-// console.log('test cmd commit')
 class Tracker
 {
     constructor(task)
     {
         this.button = createButton(task.dom, "Start", [task.name+" tracker"]);
         this.timerElement = createDiv(task.dom, "", [task.name+" timer-element"]);
+        this.timerElement.style.display = "inline-flex";
         this.min=0o0;
-
         this.minuteElement = createDiv(this.timerElement, "00", [task.name+" min"]);
         this.sec =0o0;
         this.secondElement = createDiv(this.timerElement, ":00", [task.name+" sec"]);
-
-
         this.handleStartAndStop();
     }
     startAndStopButton()
@@ -25,25 +22,24 @@ class Tracker
                 this.sec++;
                 if(this.sec<10)
                 {
-                    this.secondElement.innerText = "0"+ this.sec;
+                    this.secondElement.innerText = ":0"+ this.sec;
                 }
                 if(this.sec>=10)
                 {
-                    this.secondElement.innerText = this.sec;
+                    this.secondElement.innerText = ":"+this.sec;
                 }
                 if (this.sec>=60)
                 {
                     this.min++;
                     this.minuteElement.innerText = "0"+this.min;
                     this.sec =0;
-                    this.secondElement.innerText =   "0"+0;
+                    this.secondElement.innerText =   ":0"+0;
                 }
                 if(this.min>60)
                 {
                     this.min.innerText = this.min;
                 }
-                console.log(this.sec);
-            }, 1000)
+            }, 100)
         }
         else
         {

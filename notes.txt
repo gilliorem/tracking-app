@@ -1,2 +1,10 @@
-la bubble compte mais le barage de texte.
-ne pas line through at all
+- revoir le design de la task :
+    - diminuer la taille de la policeOK
+    - aligner le tempsOK
+
+
+-TIMER : s'ajoute au rehcrgement de la tache addTaskFromLocalStorage()
+
+
+- Task terminée : la range dans une liste des tâches qui sont terminées. 
+qui apparrait dans le dom qd une tache au moins à été terminée.

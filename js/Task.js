@@ -55,7 +55,8 @@ class Task
         {
             name : this.name,
             checked : this.checked,
-            time : this.tracker.min
+            minute : this.tracker.min,
+            second : this.tracker.sec
         }
         return serealizedTask;
     }

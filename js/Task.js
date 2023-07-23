@@ -9,7 +9,6 @@ class Task
         this.handleCheck()
         this.tracker = new Tracker(this);
         this.serealize();
-        console.log(this);
     }
 
     display(parent)

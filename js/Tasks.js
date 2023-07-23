@@ -19,9 +19,12 @@ class Tasks
         {
             task.bubble.classList.add("checked");
         }            
-        
-        // task.tracker.minuteElement.innerText == task.minute;
-        // task.tracker.secondElement.innerText == task.second;
+        task.tracker.sec = data.second;
+        task.tracker.min = data.minute
+        console.log(data.second)
+        console.log(task.tracker.dom.minute.innerText)
+        task.tracker.dom.second.innerText = ":"+data.second;
+        task.tracker.dom.minute.innerText = "0"+data.minute;
     }
     handleAddTask(button)
     {

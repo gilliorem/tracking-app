@@ -5,6 +5,9 @@
 
 -TIMER : s'ajoute au rehcrgement de la tache addTaskFromLocalStorage()
 
+-revoir addTaskFromLocalStorage() ou faire une seralize() 
+pour chaque objet : task, tracker ...
 
 - Task terminée : la range dans une liste des tâches qui sont terminées. 
 qui apparrait dans le dom qd une tache au moins à été terminée.
+

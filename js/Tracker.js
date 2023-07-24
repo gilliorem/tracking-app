@@ -10,6 +10,7 @@ class Tracker
         this.sec =0o0;
         this.dom.second = createDiv(this.dom, ":00", [task.name+" sec"]);
         this.handleStartAndStop();
+        
     }
     startAndStopButton()
     {
@@ -55,6 +56,15 @@ class Tracker
         {
             this.startAndStopButton();
         })
+    }
+    
+    deserealize(time)
+    {
+        console.log(this.sec);
+        this.sec = time.second;
+        this.min = time.minute;
+        this.dom.second.innerText = ":"+time.second;
+        this.dom.minute.innerText = "0"+time.minute;
     }
 }
 

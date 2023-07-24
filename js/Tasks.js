@@ -4,7 +4,7 @@ class Tasks
     {
         this.list =[];
         this.dom = createDiv(todoApp.dom, "", ["task-container"]);
-        this.handleAddTask(todoApp.button)
+        this.handleAddTask(todoApp.button);
     }
     addTask()
     {
@@ -15,16 +15,12 @@ class Tasks
     {
         const task = new Task(data.name, data.checked, this.dom);
         this.list.push(task);
-        if(task.checked)
-        {
-            task.bubble.classList.add("checked");
-        }            
-        task.tracker.sec = data.second;
-        task.tracker.min = data.minute
-        console.log(data.second)
-        console.log(task.tracker.dom.minute.innerText)
-        task.tracker.dom.second.innerText = ":"+data.second;
-        task.tracker.dom.minute.innerText = "0"+data.minute;
+        task.deserealize();
+        console.log(data);
+        console.log(task.tracker);
+        task.tracker.deserealize(data.second);
+        task.tracker.deserealize(data.minute);
+        
     }
     handleAddTask(button)
     {

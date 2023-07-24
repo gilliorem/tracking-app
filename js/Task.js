@@ -59,6 +59,13 @@ class Task
         }
         return serealizedTask;
     }
+    deserealize()
+    {
+        if(this.checked)
+        {
+            this.bubble.classList.add("checked");
+        }
+    }
     
 }
 

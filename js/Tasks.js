@@ -18,8 +18,7 @@ class Tasks
         task.deserealize();
         console.log(data);
         console.log(task.tracker);
-        task.tracker.deserealize(data.second);
-        task.tracker.deserealize(data.minute);
+        task.tracker.deserealize(data);
         
     }
     handleAddTask(button)
@@ -29,5 +28,9 @@ class Tasks
             this.addTask();
             window.todoApp.input.value="";
         })
+    }
+    filter(func)
+    {
+        this.list = this.list.filter(func);
     }
 }

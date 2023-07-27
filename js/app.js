@@ -1,4 +1,4 @@
-class todoApp
+class TodoApp
 {
     constructor()
     {
@@ -11,6 +11,7 @@ class todoApp
         this.setKeyBind();
         this.handleSave();
         this.onRefresh();
+        this.createCompletedTasks();
     }
     save()
     {
@@ -76,6 +77,11 @@ class todoApp
             this.displayLocalStorage();
         })
     }
+    createCompletedTasks()
+    {
+        this.completedTasks = new CompletedTask();
+    }
 }
 
-window.todoApp = new todoApp();
+window.todoApp = new TodoApp();
+

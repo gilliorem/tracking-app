@@ -11,3 +11,6 @@ pour chaque objet : task, tracker ...
 - Task terminée : la range dans une liste des tâches qui sont terminées. 
 qui apparrait dans le dom qd une tache au moins à été terminée.
 
+what's going on ? que se passe t il ?
+je n'arrive pas à save l'objet tache
+et le refaire via le localStorage. 

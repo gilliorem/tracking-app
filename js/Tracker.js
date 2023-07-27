@@ -58,13 +58,13 @@ class Tracker
         })
     }
     
-    deserealize(time)
+    deserealize(data)
     {
         console.log(this.sec);
-        this.sec = time.second;
-        this.min = time.minute;
-        this.dom.second.innerText = ":"+time.second;
-        this.dom.minute.innerText = "0"+time.minute;
+        this.sec = data.second;
+        this.min = data.minute;
+        this.dom.second.innerText = ":"+data.second;
+        this.dom.minute.innerText = "0"+data.minute;
     }
 }
 

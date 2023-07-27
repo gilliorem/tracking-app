@@ -37,7 +37,7 @@ class Task
             this.bubble.classList.add("checked");
         }
         else this.bubble.classList == "bubble";
-        
+        todoApp.completedTasks.addTask(this);
     }
 
     handleCheck()
